@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  php:
+    container_name: php_apache
+    build: .
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8080:80"
