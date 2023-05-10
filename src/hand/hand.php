@@ -1,4 +1,5 @@
 <?php
 interface Hand {
-    public function fightResult($hand);
+    public function name(): string;
+    public function fightResult(Hand $hand): string;
 }

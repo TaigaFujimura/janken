@@ -1,14 +1,21 @@
 <?php
 class Player {
-    public $name;
-    public $hand;
+    private string $name;
+    private Hand $hand;
 
-    function __construct($name, $hand) {
+    public function __construct($name, $hand)
+    {
         $this -> name = $name;
         $this -> hand = $hand;
     }
 
-    function fightWith($opponent_player) {
+    public function showHandInfo(): string
+    {
+        return "{$this->name}の手: {$this->hand->name()}";
+    }
+
+    public function fightWith($opponent_player): string
+    {
         $player_hand = $this->hand;
         $opponent_hand = $opponent_player->hand;
 

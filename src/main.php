@@ -11,22 +11,25 @@ $hands = array(
     3 => new Pa(),
 );
 
-echo '出す手を決めて下さい.'."\n";
-echo '1: グー'."\n";
-echo '2: チョキ'."\n";
-echo '3: パー'."\n";
+echo "出す手を決めて下さい.\n";
+echo "1: グー\n";
+echo "2: チョキ\n";
+echo "3: パー\n";
 echo "\n";
 
 echo 'あなたの手 > ';
-$opponent_hand = $hands[rand(1, 3)];
-$player_hand = $hands[(int)fgets(STDIN)];
+$playerHandId = (int)fgets(STDIN);
+$opponentHandId = rand(1, 3);
 echo "\n";
 
-$player = new Player("あなた", $player_hand);
-$opponent = new Player("プログラム", $opponent_hand);
+$opponentHand = $hands[$opponentHandId];
+$playerHand = $hands[$playerHandId];
 
-echo sprintf('%sの手: %s', "あなた", $player_hand->name)."\n";
-echo sprintf('%sの手: %s', "プログラム", $opponent_hand->name)."\n";
+$player = new Player("あなた", $playerHand);
+$opponent = new Player("プログラム", $opponentHand);
+
+echo "{$player->showHandInfo()}\n";
+echo "{$opponent->showHandInfo()}\n";
 echo "\n";
 
 echo $player->fightWith($opponent)."\n";
