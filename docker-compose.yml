@@ -2,9 +2,11 @@ version: '3'
 
 services:
   php:
-    container_name: php_apache
-    build: .
+    container_name: janken
+    image: php:8.0-cli
     volumes:
-      - ./src:/var/www/html
+      - ./src:/app
+    working_dir: /app
+    tty: true
     ports:
       - "8080:80"
