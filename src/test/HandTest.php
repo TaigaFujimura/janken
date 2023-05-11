@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace src\test\hand;
+namespace src\test;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use src\main\hand\Hand;
-use src\main\hand\Gu;
-use src\main\hand\Choki;
-use src\main\hand\Pa;
+use src\main\const\HandConst;
 
 class HandTest extends TestCase
 {
@@ -26,9 +26,9 @@ class HandTest extends TestCase
     public function nameDataProvider(): array
     {
         return [
-            'グー' => [new Gu(), 'グー'],
-            'チョキ' => [new Choki(), 'チョキ'],
-            'パー' => [new Pa(), 'パー'],
+            'グー' => [Hand::gu(), HandConst::$guName],
+            'チョキ' => [Hand::choki(), HandConst::$chokiName],
+            'パー' => [Hand::pa(), HandConst::$paName],
         ];
     }
 
@@ -47,9 +47,9 @@ class HandTest extends TestCase
     public function idDataProvider(): array
     {
         return [
-            'グー' => [new Gu(), 1],
-            'チョキ' => [new Choki(), 2],
-            'パー' => [new Pa(), 3],
+            'グー' => [Hand::gu(), HandConst::$guId],
+            'チョキ' => [Hand::choki(), HandConst::$chokiId],
+            'パー' => [Hand::pa(), HandConst::$paId],
         ];
     }
 }
