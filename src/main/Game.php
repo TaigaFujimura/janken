@@ -16,7 +16,6 @@ class Game
 
     public function result(Hand $playerHand, Hand $opponentHand): string
     {
-        $affinity = $this->rule->handAffinity();
-        return $affinity->battle($playerHand, $opponentHand);
+        return $this->rule->battleResult($playerHand, $opponentHand);
     }
 }
