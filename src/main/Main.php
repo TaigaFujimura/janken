@@ -1,13 +1,13 @@
 <?php
 namespace src\main;
 
+require_once __DIR__ . '/Game.php';
 require_once __DIR__ . '/rule/Rule.php';
 require_once __DIR__ . '/rule/NormalRule.php';
 require_once __DIR__ . '/const/FightResult.php';
 require_once __DIR__ . '/const/HandConst.php';
-require_once __DIR__.'/Game.php';
 require_once __DIR__ . '/hand/Hand.php';
-require_once __DIR__ . '/hand/HandAffinity.php';
+require_once __DIR__ . '/hand/NormalAffinity.php';
 
 use src\main\rule\NormalRule;
 

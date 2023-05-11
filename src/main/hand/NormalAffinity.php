@@ -1,13 +1,12 @@
 <?php
 
-namespace src\main\rule;
+namespace src\main\hand;
 
-use src\main\hand\Hand;
 use src\main\const\HandConst;
 use src\main\const\FightResult;
 use PHPUnit\Util\Exception;
 
-class HandAffinity
+class NormalAffinity
 {
     public static function battle(Hand $playerHand, Hand $opponentHand): string
     {
@@ -40,6 +39,6 @@ class HandAffinity
             if ($opponentHandId === $paId) return $even;
         }
 
-        throw new Exception("error: HandAffinity");
+        throw new Exception("error: NormalAffinity");
     }
 }
