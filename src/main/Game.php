@@ -3,17 +3,38 @@ declare(strict_types=1);
 
 namespace src\main;
 
+use src\main\player\Player;
 use src\main\rule\Rule;
-use src\main\hand\Hand;
 
-class Game
-{
+class Game {
     private Rule $rule;
+    private array $players;
 
-    public function __construct(Rule $rule){$this->rule = $rule;}
+    public function __construct(Rule $rule, Player ...$players) {
+        $this->rule = $rule;
+        $this->players = $players;
+    }
 
-    public function fight(Hand $player, Hand ...$opponents): string
-    {
-        return $this->rule->battleResult($player, ...$opponents);
+    public function setAllHands(): void {
+        foreach($this->players as &$player) {
+            $player = $player->setHand();
+            $handId = $player->showHand();
+            $hand = $this->rule->hands()[$handId];
+            echo "{$player->getName()}の手: {$hand->name()}\n";
+        }
+        unset($player);
+    }
+
+    public function fight(): void {
+        $hands = array();
+
+        foreach ($this->players as $player) {
+            $handId = $player->showHand();
+            $hands[] = $this->rule->hands()[$handId];
+        }
+
+        $playerHand = array_shift($hands);
+
+        echo $this->rule->battleResult($playerHand, ...$hands)."\n";
     }
 }

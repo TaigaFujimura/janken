@@ -7,6 +7,7 @@ use src\main\hand\Hand;
 
 interface Rule
 {
+    /** @return Hand[] */
     public function hands(): array;
     public function battleResult(Hand $player, Hand ...$opponents): string;
     public function numberOfWinner(): int;
