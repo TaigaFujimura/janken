@@ -15,11 +15,11 @@ class Hand
         $this->name = $name;
     }
 
+    public function id(): int { return $this->id; }
+    public function name(): string { return $this->name; }
+
     public static function gu(): Hand { return new Hand(HandConst::$guId, HandConst::$guName); }
     public static function choki(): Hand { return new Hand(HandConst::$chokiId, HandConst::$chokiName); }
     public static function pa(): Hand { return new Hand(HandConst::$paId, HandConst::$paName); }
     public static function invincible(): Hand { return new Hand(HandConst::$invincibleId, HandConst::$invincibleName); }
-
-    public function id(): int { return $this->id; }
-    public function name(): string { return $this->name; }
 }

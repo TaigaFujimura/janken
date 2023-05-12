@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace src\main\hand;
 
@@ -8,7 +9,7 @@ use PHPUnit\Util\Exception;
 
 class NormalAffinity
 {
-    public function battle(Hand $playerHand, Hand $opponentHand): string
+    public function compare(Hand $playerHand, Hand $opponentHand): string
     {
         $playerHandId = $playerHand->id();
         $opponentHandId = $opponentHand->id();

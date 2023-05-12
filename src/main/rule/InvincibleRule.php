@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace src\main\rule;
 
@@ -24,7 +25,7 @@ class InvincibleRule implements Rule
 
     public function battleResult(Hand $playerHand, Hand $opponentHand): string
     {
-        return $this->affinity->battle($playerHand, $opponentHand);
+        return $this->affinity->compare($playerHand, $opponentHand);
     }
     public function hands(): array { return $this->hands; }
 }

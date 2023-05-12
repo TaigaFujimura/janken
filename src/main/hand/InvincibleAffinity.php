@@ -8,7 +8,7 @@ use src\main\const\HandConst;
 
 class InvincibleAffinity
 {
-    public function battle(Hand $playerHand, Hand $opponentHand): string
+    public function compare(Hand $playerHand, Hand $opponentHand): string
     {
         $playerHandId = $playerHand->id();
         $opponentHandId = $opponentHand->id();
