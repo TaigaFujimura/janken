@@ -3,30 +3,23 @@ declare(strict_types=1);
 
 namespace src\main\rule;
 
-use src\main\const\HandConst;
-use src\main\hand\affinity\InvincibleAffinity;
+use src\main\hand\definition\InvincibleHandDefinition;
 use src\main\hand\Hand;
-use src\main\hand\affinity\Affinity;
+use src\main\hand\definition\HandDefinition;
 
 class InvincibleRule implements Rule
 {
-    private Affinity $affinity;
-    private array $hands;
+    private HandDefinition $handDefinition;
 
     public function __construct()
     {
-        $this->affinity = new InvincibleAffinity();
-        $this->hands = array(
-            HandConst::$guId => Hand::gu(),
-            HandConst::$chokiId => Hand::choki(),
-            HandConst::$paId => Hand::pa(),
-            HandConst::$invincibleId => Hand::invincible(),
-        );
+        $this->handDefinition = new InvincibleHandDefinition();
     }
+
+    public function hands(): array { return $this->handDefinition->hands()->get(); }
 
     public function battleResult(Hand $player, Hand ...$opponents): string
     {
-        return $this->affinity->compare($player, ...$opponents);
+        return $this->handDefinition->affinity($player, ...$opponents)->get();
     }
-    public function hands(): array { return $this->hands; }
 }

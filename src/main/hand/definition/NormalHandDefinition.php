@@ -1,39 +1,47 @@
 <?php
+declare(strict_types=1);
 
-namespace src\main\hand\affinity;
+namespace src\main\hand\definition;
 
 use PHPUnit\Util\Exception;
-use src\main\const\FightResult;
-use src\main\const\HandConst;
 use src\main\hand\Hand;
+use src\main\hand\HandProperty;
+use src\main\hand\HandAffinity;
+use src\main\hand\list\HandList;
+use src\main\hand\list\GuChokiPa;
 
-class InvincibleAffinity implements Affinity
+class NormalHandDefinition implements HandDefinition
 {
-    public function compare(Hand $playerHand, Hand ...$opponentHands): string
+    private HandList $handList;
+
+    public function __construct()
+    {
+        $this->handList = new GuChokiPa();
+    }
+
+    public function hands(): HandList { return $this->handList; }
+
+    public function affinity(Hand $playerHand, Hand ...$opponentHands): HandAffinity
     {
         $playerHandId = $playerHand->id();
 
-        $guId = HandConst::$guId;
-        $chokiId = HandConst::$chokiId;
-        $paId = HandConst::$paId;
-        $invincibleId = HandConst::$invincibleId;
+        $guId = HandProperty::$guId;
+        $chokiId = HandProperty::$chokiId;
+        $paId = HandProperty::$paId;
 
-        $win = FightResult::$win;
-        $even = FightResult::$even;
-        $lose = FightResult::$lose;
+        $win = HandAffinity::strong();
+        $even = HandAffinity::even();
+        $lose = HandAffinity::weak();
 
         $existGu = $this->existHand($guId, ...$opponentHands);
         $existChoki = $this->existHand($chokiId, ...$opponentHands);
         $existPa = $this->existHand($paId, ...$opponentHands);
-        $existInvincible = $this->existHand($invincibleId, ...$opponentHands);
 
-        // 無敵がいるなら負け
         // チョキもパーもいるならあいこ
         // チョキもパーもいなければあいこ
         // チョキがいるならグー VS チョキで勝ち
         // パーがいるならグー VS パーで負け
         if($playerHandId === $guId) {
-            if($existInvincible) return $lose;
             if($existChoki && $existPa) return $even;
             if(!$existChoki && !$existPa) return $even;
             if($existChoki) return $win;
@@ -42,7 +50,6 @@ class InvincibleAffinity implements Affinity
         }
 
         if($playerHandId === $chokiId) {
-            if($existInvincible) return $lose;
             if($existGu && $existPa) return $even;
             if(!$existGu && !$existPa) return $even;
             if($existGu) return $lose;
@@ -51,17 +58,11 @@ class InvincibleAffinity implements Affinity
         }
 
         if($playerHandId === $paId) {
-            if($existInvincible) return $lose;
             if($existChoki && $existGu) return $even;
             if(!$existChoki && !$existGu) return $even;
             if($existChoki) return $lose;
             if($existGu) return $win;
             throw new Exception("AffinityMultiple.php => if(\$playerHandId === \$paId) {}");
-        }
-
-        if($playerHandId === $invincibleId) {
-            if($existInvincible) return $even;
-            return $win;
         }
 
         throw new Exception("error: AffinityMultiple");

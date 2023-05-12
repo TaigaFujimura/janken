@@ -3,30 +3,22 @@ declare(strict_types=1);
 
 namespace src\main\rule;
 
-use src\main\const\HandConst;
-use src\main\hand\affinity\NormalAffinity;
 use src\main\hand\Hand;
-use src\main\hand\affinity\Affinity;
+use src\main\hand\definition\HandDefinition;
+use src\main\hand\definition\NormalHandDefinition;
 
-class NormalRule implements Rule
-{
-    private Affinity $affinity;
-    private array $hands;
+class NormalRule implements Rule {
+    private HandDefinition $handDefinition;
 
-    public function __construct()
-    {
-        $this->affinity = new NormalAffinity();
-        $this->hands = array(
-            HandConst::$guId => Hand::gu(),
-            HandConst::$chokiId => Hand::choki(),
-            HandConst::$paId => Hand::pa(),
-        );
+    public function __construct() {
+        $this->handDefinition = new NormalHandDefinition();
     }
 
-    public function hands(): array { return $this->hands; }
+    public function hands(): array {
+        return $this->handDefinition->hands()->get();
+    }
 
-    public function battleResult(Hand $player, Hand ...$opponents): string
-    {
-        return $this->affinity->compare($player, ...$opponents);
+    public function battleResult(Hand $player, Hand ...$opponents): string {
+        return $this->handDefinition->affinity($player, ...$opponents)->get();
     }
 }

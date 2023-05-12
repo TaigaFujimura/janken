@@ -4,11 +4,13 @@ namespace src\main;
 require_once __DIR__ . '/Game.php';
 require_once __DIR__ . '/rule/Rule.php';
 require_once __DIR__ . '/rule/NormalRule.php';
-require_once __DIR__ . '/const/FightResult.php';
-require_once __DIR__ . '/const/HandConst.php';
 require_once __DIR__ . '/hand/Hand.php';
-require_once __DIR__ . '/hand/affinity/Affinity.php';
-require_once __DIR__ . '/hand/affinity/NormalAffinity.php';
+require_once __DIR__ . '/hand/list/HandList.php';
+require_once __DIR__ . '/hand/list/GuChokiPa.php';
+require_once __DIR__ . '/hand/HandAffinity.php';
+require_once __DIR__ . '/hand/HandProperty.php';
+require_once __DIR__ . '/hand/definition/HandDefinition.php';
+require_once __DIR__ . '/hand/definition/NormalHandDefinition.php';
 
 use src\main\rule\NormalRule;
 

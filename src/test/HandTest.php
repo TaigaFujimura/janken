@@ -3,11 +3,9 @@ declare(strict_types=1);
 
 namespace src\test;
 
-require __DIR__ . '/../vendor/autoload.php';
-
 use PHPUnit\Framework\TestCase;
 use src\main\hand\Hand;
-use src\main\const\HandConst;
+use src\main\hand\HandProperty;
 
 class HandTest extends TestCase
 {
@@ -26,9 +24,10 @@ class HandTest extends TestCase
     public function nameDataProvider(): array
     {
         return [
-            'グー' => [Hand::gu(), HandConst::$guName],
-            'チョキ' => [Hand::choki(), HandConst::$chokiName],
-            'パー' => [Hand::pa(), HandConst::$paName],
+            'グー' => [Hand::gu(), HandProperty::$guName],
+            'チョキ' => [Hand::choki(), HandProperty::$chokiName],
+            'パー' => [Hand::pa(), HandProperty::$paName],
+            '無敵' => [Hand::invincible(), HandProperty::$invincibleName],
         ];
     }
 
@@ -47,9 +46,10 @@ class HandTest extends TestCase
     public function idDataProvider(): array
     {
         return [
-            'グー' => [Hand::gu(), HandConst::$guId],
-            'チョキ' => [Hand::choki(), HandConst::$chokiId],
-            'パー' => [Hand::pa(), HandConst::$paId],
+            'グー' => [Hand::gu(), HandProperty::$guId],
+            'チョキ' => [Hand::choki(), HandProperty::$chokiId],
+            'パー' => [Hand::pa(), HandProperty::$paId],
+            '無敵' => [Hand::invincible(), HandProperty::$invincibleId],
         ];
     }
 }

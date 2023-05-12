@@ -2,7 +2,7 @@
 
 namespace src\test;
 
-use src\main\const\FightResult;
+use src\main\hand\HandAffinity;
 use src\main\Game;
 use PHPUnit\Framework\TestCase;
 use src\main\hand\Hand;
@@ -27,9 +27,9 @@ class InvincibleGameTest extends TestCase
 
     public function invincibleGameDataProvider()
     {
-        $win = FightResult::$win;
-        $even = FightResult::$even;
-        $lose = FightResult::$lose;
+        $win = HandAffinity::$strong;
+        $even = HandAffinity::$even;
+        $lose = HandAffinity::$weak;
         return [
             '自分がグー, 相手がグーの場合' => [Hand::gu(), Hand::gu(), $even],
             '自分がグー, 相手がチョキの場合' => [Hand::gu(), Hand::choki(), $win],

@@ -2,7 +2,7 @@
 
 namespace src\main\hand;
 
-use src\main\const\HandConst;
+use src\main\hand\HandProperty;
 
 class Hand
 {
@@ -18,8 +18,8 @@ class Hand
     public function id(): int { return $this->id; }
     public function name(): string { return $this->name; }
 
-    public static function gu(): Hand { return new Hand(HandConst::$guId, HandConst::$guName); }
-    public static function choki(): Hand { return new Hand(HandConst::$chokiId, HandConst::$chokiName); }
-    public static function pa(): Hand { return new Hand(HandConst::$paId, HandConst::$paName); }
-    public static function invincible(): Hand { return new Hand(HandConst::$invincibleId, HandConst::$invincibleName); }
+    public static function gu(): Hand { return new Hand(HandProperty::$guId, HandProperty::$guName); }
+    public static function choki(): Hand { return new Hand(HandProperty::$chokiId, HandProperty::$chokiName); }
+    public static function pa(): Hand { return new Hand(HandProperty::$paId, HandProperty::$paName); }
+    public static function invincible(): Hand { return new Hand(HandProperty::$invincibleId, HandProperty::$invincibleName); }
 }

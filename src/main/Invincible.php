@@ -4,11 +4,13 @@ namespace src\main;
 require_once __DIR__ . '/Game.php';
 require_once __DIR__ . '/rule/Rule.php';
 require_once __DIR__ . '/rule/InvincibleRule.php';
-require_once __DIR__ . '/const/FightResult.php';
-require_once __DIR__ . '/const/HandConst.php';
+require_once __DIR__ . '/hand/HandAffinity.php';
+require_once __DIR__ . '/hand/HandProperty.php';
 require_once __DIR__ . '/hand/Hand.php';
-require_once __DIR__ . '/hand/affinity/Affinity.php';
-require_once __DIR__ . '/hand/affinity/InvincibleAffinity.php';
+require_once __DIR__ . '/hand/definition/HandDefinition.php';
+require_once __DIR__ . '/hand/definition/InvincibleHandDefinition.php';
+require_once __DIR__ . '/hand/list/HandList.php';
+require_once __DIR__ . '/hand/list/GuChokiPaInvincible.php';
 
 use src\main\rule\InvincibleRule;
 

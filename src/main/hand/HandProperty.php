@@ -1,8 +1,8 @@
 <?php
 
-namespace src\main\const;
+namespace src\main\hand;
 
-class HandConst
+class HandProperty
 {
     public static int $guId = 1;
     public static int $chokiId = 2;
