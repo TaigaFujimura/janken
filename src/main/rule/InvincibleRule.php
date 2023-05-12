@@ -10,10 +10,12 @@ use src\main\hand\definition\HandDefinition;
 class InvincibleRule implements Rule
 {
     private HandDefinition $handDefinition;
+    private int $numberOfWinner;
 
-    public function __construct()
+    public function __construct(int $numberOfWinner)
     {
         $this->handDefinition = new InvincibleHandDefinition();
+        $this->numberOfWinner = $numberOfWinner;
     }
 
     public function hands(): array { return $this->handDefinition->hands()->get(); }
@@ -22,4 +24,6 @@ class InvincibleRule implements Rule
     {
         return $this->handDefinition->affinity($player, ...$opponents)->get();
     }
+
+    public function numberOfWinner(): int { return $this->numberOfWinner; }
 }
