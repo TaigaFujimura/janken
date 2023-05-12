@@ -12,10 +12,8 @@ class Game
 
     public function __construct(Rule $rule){$this->rule = $rule;}
 
-    public function rule(): Rule { return $this->rule; }
-
-    public function result(Hand $playerHand, Hand $opponentHand): string
+    public function fight(Hand $player, Hand ...$opponents): string
     {
-        return $this->rule->battleResult($playerHand, $opponentHand);
+        return $this->rule->battleResult($player, ...$opponents);
     }
 }

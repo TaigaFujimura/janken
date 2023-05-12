@@ -21,7 +21,7 @@ class InvincibleGameTest extends TestCase
     {
         $rule = new InvincibleRule();
         $game = new Game($rule);
-        $actual = $game->result($playerHand, $opponentHand);
+        $actual = $game->fight($playerHand, $opponentHand);
         self::assertSame($expected, $actual);
     }
 

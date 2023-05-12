@@ -7,7 +7,8 @@ require_once __DIR__ . '/rule/InvincibleRule.php';
 require_once __DIR__ . '/const/FightResult.php';
 require_once __DIR__ . '/const/HandConst.php';
 require_once __DIR__ . '/hand/Hand.php';
-require_once __DIR__ . '/hand/InvincibleAffinity.php';
+require_once __DIR__ . '/hand/affinity/Affinity.php';
+require_once __DIR__ . '/hand/affinity/InvincibleAffinity.php';
 
 use src\main\rule\InvincibleRule;
 
@@ -24,14 +25,21 @@ echo "\n";
 
 echo "あなたの手 > ";
 $playerHandId = (int)fgets(STDIN);
-$opponentHandId = rand(1,4);
+$opponent1HandId = rand(1,4);
+$opponent2HandId = rand(1,4);
+$opponent3HandId = rand(1,4);
 
 $playerHand = $hands[$playerHandId];
-$opponentHand = $hands[$opponentHandId];
+$opponent1Hand = $hands[$opponent1HandId];
+$opponent2Hand = $hands[$opponent2HandId];
+$opponent3Hand = $hands[$opponent3HandId];
+$opponentHands = [$opponent1Hand, $opponent2Hand, $opponent3Hand];
 
 echo "あなたの手: {$playerHand->name()}\n";
-echo "プログラムの手: {$opponentHand->name()}\n";
+echo "プログラム1の手: {$opponent1Hand->name()}\n";
+echo "プログラム2の手: {$opponent2Hand->name()}\n";
+echo "プログラム3の手: {$opponent3Hand->name()}\n";
 echo "\n";
 
-$result = $game->result($playerHand, $opponentHand);
+$result = $game->fight($playerHand, ...$opponentHands);
 echo $result."\n";

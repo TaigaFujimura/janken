@@ -22,7 +22,7 @@ class NormalGameTest extends TestCase
     {
         $rule = new NormalRule();
         $game = new Game($rule);
-        $actual = $game->result($playerHand, $opponentHand);
+        $actual = $game->fight($playerHand, $opponentHand);
         self::assertSame($expected, $actual);
     }
 
