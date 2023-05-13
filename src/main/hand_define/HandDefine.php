@@ -1,10 +1,10 @@
 <?php
 
-namespace src\main\hand\define;
+namespace src\main\hand_define;
 
 use src\main\hand\HandAffinity;
 use src\main\hand\Hand;
-use src\main\hand\list\HandList;
+use src\main\hand_list\HandList;
 
 interface HandDefine
 {

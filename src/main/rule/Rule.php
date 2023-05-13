@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace src\main\rule;
 
 use src\main\hand\Hand;
-use src\main\hand\list\HandList;
+use src\main\hand_list\HandList;
 
 interface Rule
 {

@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace src\main\rule;
 
-use src\main\hand\define\HandDefine;
-use src\main\hand\define\InvincibleHandDefine;
+use src\main\hand_define\HandDefine;
+use src\main\hand_define\InvincibleHandDefine;
 use src\main\hand\Hand;
-use src\main\hand\list\HandList;
+use src\main\hand_list\HandList;
 
 class InvincibleRule implements Rule
 {

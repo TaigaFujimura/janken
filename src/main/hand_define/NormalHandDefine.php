@@ -1,21 +1,22 @@
 <?php
+declare(strict_types=1);
 
-namespace src\main\hand\define;
+namespace src\main\hand_define;
 
 use PHPUnit\Util\Exception;
-use src\main\hand\HandAffinity;
-use src\main\hand\HandProperty;
 use src\main\hand\Hand;
-use src\main\hand\list\GuChokiPaInvincible;
-use src\main\hand\list\HandList;
+use src\main\hand\HandProperty;
+use src\main\hand\HandAffinity;
+use src\main\hand_list\HandList;
+use src\main\hand_list\GuChokiPa;
 
-class InvincibleHandDefine implements HandDefine
+class NormalHandDefine implements HandDefine
 {
     private HandList $handList;
 
     public function __construct()
     {
-        $this->handList = new GuChokiPaInvincible();
+        $this->handList = new GuChokiPa();
     }
 
     public function hands(): HandList { return $this->handList; }
@@ -27,7 +28,6 @@ class InvincibleHandDefine implements HandDefine
         $guId = HandProperty::$guId;
         $chokiId = HandProperty::$chokiId;
         $paId = HandProperty::$paId;
-        $invincibleId = HandProperty::$invincibleId;
 
         $win = HandAffinity::strong();
         $even = HandAffinity::even();
@@ -36,15 +36,12 @@ class InvincibleHandDefine implements HandDefine
         $existGu = $this->existHand($guId, ...$opponentHands);
         $existChoki = $this->existHand($chokiId, ...$opponentHands);
         $existPa = $this->existHand($paId, ...$opponentHands);
-        $existInvincible = $this->existHand($invincibleId, ...$opponentHands);
 
-        // 無敵がいるなら負け
         // チョキもパーもいるならあいこ
         // チョキもパーもいなければあいこ
         // チョキがいるならグー VS チョキで勝ち
         // パーがいるならグー VS パーで負け
         if($playerHandId === $guId) {
-            if($existInvincible) return $lose;
             if($existChoki && $existPa) return $even;
             if(!$existChoki && !$existPa) return $even;
             if($existChoki) return $win;
@@ -53,7 +50,6 @@ class InvincibleHandDefine implements HandDefine
         }
 
         if($playerHandId === $chokiId) {
-            if($existInvincible) return $lose;
             if($existGu && $existPa) return $even;
             if(!$existGu && !$existPa) return $even;
             if($existGu) return $lose;
@@ -62,19 +58,11 @@ class InvincibleHandDefine implements HandDefine
         }
 
         if($playerHandId === $paId) {
-            if($existInvincible) return $lose;
             if($existChoki && $existGu) return $even;
             if(!$existChoki && !$existGu) return $even;
             if($existChoki) return $lose;
             if($existGu) return $win;
             throw new Exception("AffinityMultiple.php => if(\$playerHandId === \$paId) {}");
-        }
-
-        if($playerHandId === $invincibleId) {
-            if($existGu) return $win;
-            if($existChoki) return $win;
-            if($existPa) return $win;
-            return $even;
         }
 
         throw new Exception("error: AffinityMultiple");

@@ -10,10 +10,10 @@ require_once __DIR__ . '/player/Computer.php';
 require_once __DIR__ . '/hand/HandAffinity.php';
 require_once __DIR__ . '/hand/HandProperty.php';
 require_once __DIR__ . '/hand/Hand.php';
-require_once __DIR__ . '/hand/define/HandDefine.php';
-require_once __DIR__ . '/hand/define/InvincibleHandDefine.php';
-require_once __DIR__ . '/hand/list/HandList.php';
-require_once __DIR__ . '/hand/list/GuChokiPaInvincible.php';
+require_once __DIR__ . '/hand_define/HandDefine.php';
+require_once __DIR__ . '/hand_define/InvincibleHandDefine.php';
+require_once __DIR__ . '/hand_list/HandList.php';
+require_once __DIR__ . '/hand_list/GuChokiPaInvincible.php';
 
 use src\main\player\Computer;
 use src\main\player\User;

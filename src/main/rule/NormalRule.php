@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace src\main\rule;
 
 use src\main\hand\Hand;
-use src\main\hand\define\HandDefine;
-use src\main\hand\define\NormalHandDefine;
-use src\main\hand\list\HandList;
+use src\main\hand_define\HandDefine;
+use src\main\hand_define\NormalHandDefine;
+use src\main\hand_list\HandList;
 
 class NormalRule implements Rule {
     private HandDefine $handDefinition;
@@ -17,10 +17,11 @@ class NormalRule implements Rule {
         $this->numberOfWinner = $numberOfWinner;
     }
 
+    // TODO:バケツリレー
     public function hands(): HandList {
         return $this->handDefinition->hands();
     }
-
+    // TODO:バケツリレー
     public function battleResult(Hand $player, Hand ...$opponents): string {
         return $this->handDefinition->affinity($player, ...$opponents)->get();
     }

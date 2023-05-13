@@ -2,7 +2,7 @@
 
 namespace src\test;
 
-use src\main\hand\define\NormalHandDefine;
+use src\main\hand_define\NormalHandDefine;
 use src\main\hand\HandAffinity;
 use src\main\hand\Hand;
 use PHPUnit\Framework\TestCase;

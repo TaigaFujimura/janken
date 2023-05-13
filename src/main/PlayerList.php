@@ -12,6 +12,4 @@ class PlayerList {
     public function __construct(array $players) {
         $this->players = $players;
     }
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace src\main\hand\list;
+namespace src\main\hand_list;
 
 use src\main\hand\HandProperty;
 use src\main\hand\Hand;
