@@ -19,7 +19,7 @@ class Game {
         foreach($this->players as &$player) {
             $player = $player->setHand();
             $handId = $player->showHand();
-            $hand = $this->rule->hands()[$handId];
+            $hand = $this->rule->hands()->findById($handId);
             echo "{$player->getName()}の手: {$hand->name()}\n";
         }
         unset($player);
@@ -30,7 +30,7 @@ class Game {
 
         foreach ($this->players as $player) {
             $handId = $player->showHand();
-            $hands[] = $this->rule->hands()[$handId];
+            $hands[] = $this->rule->hands()->findById($handId);
         }
 
         $playerHand = array_shift($hands);

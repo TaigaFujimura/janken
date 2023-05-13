@@ -18,5 +18,5 @@ class GuChokiPaInvincible implements HandList
         );
     }
 
-    public function get(): array { return $this->hands; }
+    public function findById(int $handId): Hand { return $this->hands[$handId]; }
 }

@@ -3,22 +3,23 @@ declare(strict_types=1);
 
 namespace src\main\rule;
 
-use src\main\hand\definition\InvincibleHandDefinition;
+use src\main\hand\define\HandDefine;
+use src\main\hand\define\InvincibleHandDefine;
 use src\main\hand\Hand;
-use src\main\hand\definition\HandDefinition;
+use src\main\hand\list\HandList;
 
 class InvincibleRule implements Rule
 {
-    private HandDefinition $handDefinition;
+    private HandDefine $handDefinition;
     private int $numberOfWinner;
 
     public function __construct(int $numberOfWinner)
     {
-        $this->handDefinition = new InvincibleHandDefinition();
+        $this->handDefinition = new InvincibleHandDefine();
         $this->numberOfWinner = $numberOfWinner;
     }
 
-    public function hands(): array { return $this->handDefinition->hands()->get(); }
+    public function hands(): HandList { return $this->handDefinition->hands(); }
 
     public function battleResult(Hand $player, Hand ...$opponents): string
     {

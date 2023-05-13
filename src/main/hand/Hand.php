@@ -2,8 +2,6 @@
 
 namespace src\main\hand;
 
-use src\main\hand\HandProperty;
-
 class Hand
 {
     private int $id;

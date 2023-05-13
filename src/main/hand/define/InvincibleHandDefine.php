@@ -1,6 +1,6 @@
 <?php
 
-namespace src\main\hand\definition;
+namespace src\main\hand\define;
 
 use PHPUnit\Util\Exception;
 use src\main\hand\HandAffinity;
@@ -9,7 +9,7 @@ use src\main\hand\Hand;
 use src\main\hand\list\GuChokiPaInvincible;
 use src\main\hand\list\HandList;
 
-class InvincibleHandDefinition implements HandDefinition
+class InvincibleHandDefine implements HandDefine
 {
     private HandList $handList;
 

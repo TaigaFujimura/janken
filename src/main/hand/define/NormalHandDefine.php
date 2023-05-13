@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace src\main\hand\definition;
+namespace src\main\hand\define;
 
 use PHPUnit\Util\Exception;
 use src\main\hand\Hand;
@@ -10,7 +10,7 @@ use src\main\hand\HandAffinity;
 use src\main\hand\list\HandList;
 use src\main\hand\list\GuChokiPa;
 
-class NormalHandDefinition implements HandDefinition
+class NormalHandDefine implements HandDefine
 {
     private HandList $handList;
 

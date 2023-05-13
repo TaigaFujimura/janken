@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace src\test;
 
 use PHPUnit\Framework\TestCase;
-use src\main\Game;
 use src\main\hand\Hand;
 use src\main\hand\HandAffinity;
 use src\main\rule\NormalRule;
@@ -20,17 +19,16 @@ class NormalGameTest extends TestCase
      */
     public function testGameResult(Hand $playerHand, Hand $opponentHand, $expected): void
     {
-        $rule = new NormalRule();
-        $game = new Game($rule);
-        $actual = $game->fight($playerHand, $opponentHand);
+        $rule = new NormalRule(1);
+        $actual = $rule->battleResult($playerHand, $opponentHand);
         self::assertSame($expected, $actual);
     }
 
     public function gameResultDataProvider(): array
     {
-        $strong = HandAffinity::$strong;
-        $even = HandAffinity::$even;
-        $weak = HandAffinity::$weak;
+        $strong = HandAffinity::strong()->get();
+        $even = HandAffinity::even()->get();
+        $weak = HandAffinity::weak()->get();
 
         return [
             '自分がグー, 相手がグーの場合' => [Hand::gu(), Hand::gu(), $even],

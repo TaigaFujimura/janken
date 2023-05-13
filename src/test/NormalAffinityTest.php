@@ -2,7 +2,7 @@
 
 namespace src\test;
 
-use src\main\hand\definition\NormalHandDefinition;
+use src\main\hand\define\NormalHandDefine;
 use src\main\hand\HandAffinity;
 use src\main\hand\Hand;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +18,7 @@ class NormalAffinityTest extends TestCase
      */
     public function testCompare(HandAffinity $expected, Hand $player, Hand ...$opponents)
     {
-        $definition = new NormalHandDefinition();
+        $definition = new NormalHandDefine();
         $actual = $definition->affinity($player, ...$opponents);
         self::assertSame($expected->get(), $actual->get());
     }
