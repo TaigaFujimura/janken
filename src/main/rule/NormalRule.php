@@ -4,12 +4,11 @@ declare(strict_types=1);
 namespace src\main\rule;
 
 use src\main\hand\Hand;
-use src\main\hand_define\HandDefine;
 use src\main\hand_define\NormalHandDefine;
 use src\main\hand_list\HandList;
 
 class NormalRule implements Rule {
-    private HandDefine $handDefinition;
+    private NormalHandDefine $handDefinition;
     private int $numberOfWinner;
 
     public function __construct(int $numberOfWinner) {
