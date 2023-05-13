@@ -5,6 +5,7 @@ require_once __DIR__ . '/Game.php';
 require_once __DIR__ . '/player/Player.php';
 require_once __DIR__ . '/player/User.php';
 require_once __DIR__ . '/player/Computer.php';
+require_once __DIR__ . '/player_list/PlayerList.php';
 require_once __DIR__ . '/rule/Rule.php';
 require_once __DIR__ . '/rule/NormalRule.php';
 require_once __DIR__ . '/hand/Hand.php';
