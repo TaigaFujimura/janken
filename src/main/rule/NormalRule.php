@@ -22,7 +22,7 @@ class NormalRule implements Rule {
     }
     // TODO:バケツリレー
     public function battleResult(Hand $player, Hand ...$opponents): string {
-        return $this->handDefinition->affinity($player, ...$opponents)->get();
+        return $this->handDefinition->affinity($player, ...$opponents)->message();
     }
 
     public function numberOfWinner(): int { return $this->numberOfWinner; }

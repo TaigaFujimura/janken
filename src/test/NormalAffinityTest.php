@@ -20,7 +20,7 @@ class NormalAffinityTest extends TestCase
     {
         $definition = new NormalHandDefine();
         $actual = $definition->affinity($player, ...$opponents);
-        self::assertSame($expected->get(), $actual->get());
+        self::assertSame($expected->message(), $actual->message());
     }
 
     public function compareDataProvider(): array
