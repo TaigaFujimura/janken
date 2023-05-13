@@ -7,19 +7,18 @@ use PHPUnit\Util\Exception;
 use src\main\hand\Hand;
 use src\main\hand\HandProperty;
 use src\main\hand\HandAffinity;
-use src\main\hand_list\HandList;
 use src\main\hand_list\GuChokiPa;
 
 class NormalHandDefine implements HandDefine
 {
-    private HandList $handList;
+    private GuChokiPa $handList;
 
     public function __construct()
     {
         $this->handList = new GuChokiPa();
     }
 
-    public function hands(): HandList { return $this->handList; }
+    public function hands(): GuChokiPa { return $this->handList; }
 
     public function affinity(Hand $playerHand, Hand ...$opponentHands): HandAffinity
     {

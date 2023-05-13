@@ -7,18 +7,17 @@ use src\main\hand\HandAffinity;
 use src\main\hand\HandProperty;
 use src\main\hand\Hand;
 use src\main\hand_list\GuChokiPaInvincible;
-use src\main\hand_list\HandList;
 
 class InvincibleHandDefine implements HandDefine
 {
-    private HandList $handList;
+    private GuChokiPaInvincible $handList;
 
     public function __construct()
     {
         $this->handList = new GuChokiPaInvincible();
     }
 
-    public function hands(): HandList { return $this->handList; }
+    public function hands(): GuChokiPaInvincible { return $this->handList; }
 
     public function affinity(Hand $playerHand, Hand ...$opponentHands): HandAffinity
     {
