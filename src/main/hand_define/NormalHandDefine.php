@@ -5,7 +5,6 @@ namespace src\main\hand_define;
 
 use PHPUnit\Util\Exception;
 use src\main\hand\Hand;
-use src\main\hand\HandProperty;
 use src\main\hand\HandAffinity;
 use src\main\hand_list\GuChokiPa;
 
@@ -24,23 +23,23 @@ class NormalHandDefine implements HandDefine
     {
         $playerHandId = $playerHand->id();
 
-        $guId = HandProperty::$guId;
-        $chokiId = HandProperty::$chokiId;
-        $paId = HandProperty::$paId;
+        $gu = Hand::gu();
+        $choki = Hand::choki();
+        $pa = Hand::pa();
 
         $win = HandAffinity::strong();
         $even = HandAffinity::even();
         $lose = HandAffinity::weak();
 
-        $existGu = $this->existHand($guId, ...$opponentHands);
-        $existChoki = $this->existHand($chokiId, ...$opponentHands);
-        $existPa = $this->existHand($paId, ...$opponentHands);
+        $existGu = $this->existHand($gu->id(), ...$opponentHands);
+        $existChoki = $this->existHand($choki->id(), ...$opponentHands);
+        $existPa = $this->existHand($pa->id(), ...$opponentHands);
 
         // チョキもパーもいるならあいこ
         // チョキもパーもいなければあいこ
         // チョキがいるならグー VS チョキで勝ち
         // パーがいるならグー VS パーで負け
-        if($playerHandId === $guId) {
+        if($playerHandId === $gu->id()) {
             if($existChoki && $existPa) return $even;
             if(!$existChoki && !$existPa) return $even;
             if($existChoki) return $win;
@@ -48,7 +47,7 @@ class NormalHandDefine implements HandDefine
             throw new Exception("error: AffinityMultiple.php => if(\$playerHandId === \$guId) {}");
         }
 
-        if($playerHandId === $chokiId) {
+        if($playerHandId === $choki->id()) {
             if($existGu && $existPa) return $even;
             if(!$existGu && !$existPa) return $even;
             if($existGu) return $lose;
@@ -56,7 +55,7 @@ class NormalHandDefine implements HandDefine
             throw new Exception("error: AffinityMultiple.php => if(\$playerHandId === \$chokiId) {}");
         }
 
-        if($playerHandId === $paId) {
+        if($playerHandId === $pa->id()) {
             if($existChoki && $existGu) return $even;
             if(!$existChoki && !$existGu) return $even;
             if($existChoki) return $lose;

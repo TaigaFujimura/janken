@@ -8,7 +8,6 @@ require_once __DIR__ . '/player/Player.php';
 require_once __DIR__ . '/player/User.php';
 require_once __DIR__ . '/player/Computer.php';
 require_once __DIR__ . '/hand/HandAffinity.php';
-require_once __DIR__ . '/hand/HandProperty.php';
 require_once __DIR__ . '/hand/Hand.php';
 require_once __DIR__ . '/hand_define/HandDefine.php';
 require_once __DIR__ . '/hand_define/InvincibleHandDefine.php';

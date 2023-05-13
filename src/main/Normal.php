@@ -11,7 +11,6 @@ require_once __DIR__ . '/hand/Hand.php';
 require_once __DIR__ . '/hand_list/HandList.php';
 require_once __DIR__ . '/hand_list/GuChokiPa.php';
 require_once __DIR__ . '/hand/HandAffinity.php';
-require_once __DIR__ . '/hand/HandProperty.php';
 require_once __DIR__ . '/hand_define/HandDefine.php';
 require_once __DIR__ . '/hand_define/NormalHandDefine.php';
 
